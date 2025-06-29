@@ -10,18 +10,21 @@ export default defineConfig([
   },
   {
     files: ["**/*.js"],
-    languageOptions: { sourceType: "commonjs" },
+    languageOptions: {
+      sourceType: "commonjs",
+    },
   },
   {
     files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: { globals: globals.node },
+    languageOptions: {
+      globals: globals.node,
+    },
   },
-
-  // ADD THIS OVERRIDE:
   {
-    files: ["tests/**/*.js", "**/*.test.js"],  // target your test files
-    env: {
-      jest: true,  // enable Jest globals (test, expect, etc)
+    files: ["tests/**/*.js", "**/*.test.js"],
+    languageOptions: {
+      globals: globals.jest, // 👈 enables test, expect, describe, etc.
     },
   },
 ]);
+
