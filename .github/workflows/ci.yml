@@ -40,7 +40,7 @@ jobs:
         run: node ./node_modules/eslint/bin/eslint.js .
 
       - name: Run tests
-        run: npm test
+        run: node ./node_modules/.bin/jest
 
   deploy:
     runs-on: ubuntu-latest
