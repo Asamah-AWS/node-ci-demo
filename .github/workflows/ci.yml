@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -17,6 +18,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -31,13 +33,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Check ESLint permissions
-        run: ls -l ./node_modules/.bin/eslint
+        run: npm ci
 
       - name: Run ESLint
-        run: node ./node_modules/eslint/bin/eslint.js .
+        run: npx eslint .
 
       - name: Run tests
         run: npm test
