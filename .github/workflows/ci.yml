@@ -23,8 +23,11 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm install
+      - name: Run ESLint
+        run: npx eslint .
       - name: Run tests
         run: node tests/test.js
+
 
   deploy:
     runs-on: ubuntu-latest
