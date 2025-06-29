@@ -1,15 +1,12 @@
-name: My first real workflow
+name: Node.js CI
 
-on:
-  - push
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -19,15 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      - run: npm install
+      - run: node tests/test.js
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Deploy app
-        run: echo "Deploying application..."
+      - run: echo "Deploy step placeholder"
