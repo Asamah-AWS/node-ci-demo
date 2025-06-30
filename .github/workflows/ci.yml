@@ -108,9 +108,16 @@ jobs:
           # Simulate health check passing (change to exit 1 to simulate failure)
           exit 0
 
+  bake-time:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bake Time - Wait for 5 minutes
+        run: sleep 300  # 300 seconds = 5 minutes
+
   rollback:
     needs: deploy
-    if: needs.deploy.result == 'failure'
+    if: failure()  # runs only if deploy job fails
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
