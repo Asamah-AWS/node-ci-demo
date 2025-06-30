@@ -1,11 +1,3 @@
-// index.js
-function add(a, b) {
-  return a + b;
-}
+const sum = require('./sum');
 
-function subtract(a, b) {
-  return a - b;
-}
-
-// Export so tests can import them
-module.exports = { add, subtract };
+console.log('1 + 2 =', sum(1, 2));
